@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import {colors} from '../../utils/colors';
-import {spacing} from '../../utils/sizes';
+import {colors} from '../utils/colors';
+import {spacing} from '../utils/sizes';
 
 export const Timer = ({focusSubject}) => {
     return (
