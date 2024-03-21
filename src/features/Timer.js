@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
 import {colors} from '../utils/colors';
-import {spacing} from '../utils/sizes';
+import {fontSizes, spacing} from '../utils/sizes';
 import {Countdown} from '../components/Countdown';
 import {RoundedButton} from '../components/RoundedButton';
 
@@ -45,10 +45,16 @@ const styles = StyleSheet.create({
     title: {
         color: colors.white,
         textAlign: 'center',
+        fontSize: fontSizes.xl
     },
     task: {
         fontWeight: 'bold',
         textAlign: 'center',
+        color: '#FFD700',
+        fontSize: fontSizes.lg,
+        textDecorationLine:'underline'
+
+
     },
     countdown: {
         flex: 0.5,
