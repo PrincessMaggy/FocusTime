@@ -6,7 +6,7 @@ import {fontSizes, spacing} from '../utils/sizes';
 const minutesToMillis = (min) => min * 1000 * 60;
 const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
-export const Countdown = ({minutes = 20, isPaused, onProgress}) => {
+export const Countdown = ({minutes = 20, isPaused, onProgress,onEnd}) => {
     const [millis, setMillis] = useState(minutesToMillis(minutes));
     const mins = Math.floor(millis / 1000 / 60) % 60;
     const secs = Math.floor(millis / 1000) % 60;
@@ -15,6 +15,8 @@ export const Countdown = ({minutes = 20, isPaused, onProgress}) => {
     const countdownTime = () => {
         setMillis((time) => {
             if (time === 0) {
+                clearInterval(interval.current);
+                onEnd(); 
                 return time;
             }
             const timeleft = time - 1000;
