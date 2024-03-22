@@ -22,17 +22,24 @@ const ONE_SECOND_IN_MS = 1000;
 export const Timer = ({focusSubject}) => {
     const [isStarted, setIsStarted] = useState(false);
     const [progressData, setProgressData] = useState(1);
-    const [minutes, setMinutes] = useState(0.1)
+    const [minutes, setMinutes] = useState(20)
 
     const onProgress = (progress) => {
         setProgressData(progress);
     };
+    const onEnd =()=>{
+        Vibration.vibrate(PATTERN);
+        setIsStarted(false);
+        setProgressData(1);
+        reset();
+
+    }
     return (
         <View style={styles.container}>
             <View style={styles.countdown}>
                 <Countdown minutes={minutes} isPaused={!isStarted}  
                 onProgress={onProgress}
-                onEnd={()=>{Vibration.vibrate(PATTERN)}}
+                onEnd={onEnd}
 />
             </View>
             <View>
