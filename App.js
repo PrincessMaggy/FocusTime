@@ -13,7 +13,14 @@ export default function App() {
     return (
         <View style={styles.container}>
             {focusSubject ? (
-                <Timer focusSubject={focusSubject} />
+                <Timer focusSubject={focusSubject} 
+                
+                onTimerEnd={(subject)=> {       setFocusSubject(null);
+                    setFocusHistory([...focusHistory, subject])}}
+                clearSubject={() => {
+                    setFocusSubject(null);
+                  }}
+                 />
             ) : (
                 <Text> <Focus addSubject={setFocusSubject} />
         <FocusHistory focusHistory ={focusHistory}/>

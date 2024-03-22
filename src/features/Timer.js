@@ -20,12 +20,12 @@ const ONE_SECOND_IN_MS = 1000;
   ];
 
 
-export const Timer = ({focusSubject}) => {
+export const Timer = ({focusSubject, onTimerEnd,clearSubject}) => {
     useKeepAwake();
-
+    const DEFAULT_TIME = 0.1;
     const [isStarted, setIsStarted] = useState(false);
     const [progressData, setProgressData] = useState(1);
-    const [minutes, setMinutes] = useState(20)
+    const [minutes, setMinutes] = useState(DEFAULT_TIME)
 
     const onProgress = (progress) => {
         setProgressData(progress);
@@ -34,7 +34,8 @@ export const Timer = ({focusSubject}) => {
         Vibration.vibrate(PATTERN);
         setIsStarted(false);
         setProgressData(1);
-        reset();
+        setMinutes(DEFAULT_TIME);
+        onTimerEnd(focusSubject)
 
     }
     return (
@@ -69,6 +70,10 @@ export const Timer = ({focusSubject}) => {
                     />
                 )}
             </View>
+            <View style={styles.clearSubject}>
+        <RoundedButton title="-" size={50} onPress={() => clearSubject()} />
+      </View>
+
         </View>
     );
 };
@@ -107,5 +112,7 @@ const styles = StyleSheet.create({
         height:spacing.sm,
         
         
-    }
+    },  clearSubject: {alignItems:'center',
+        paddingBottom: 25,
+      },
 });
