@@ -4,16 +4,21 @@ import {Focus} from './src/features/Focus';
 import {Timer} from './src/features/Timer';
 import {colors} from './src/utils/colors';
 import {spacing} from './src/utils/sizes';
+import { FocusHistory } from './src/features/FocusHistory';
 
 export default function App() {
     const [focusSubject, setFocusSubject] = useState(null);
+    const [focusHistory, setFocusHistory] = useState(['fhfh','fggf'])
 
     return (
         <View style={styles.container}>
             {focusSubject ? (
                 <Timer focusSubject={focusSubject} />
             ) : (
-                <Focus addSubject={setFocusSubject} />
+                <Text> <Focus addSubject={setFocusSubject} />
+        <FocusHistory focusHistory ={focusHistory}/>
+        </Text>
+          
             )}
             <Text>{focusSubject}</Text>
         </View>
