@@ -8,14 +8,13 @@ import { FocusHistory } from './src/features/FocusHistory';
 
 export default function App() {
     const [focusSubject, setFocusSubject] = useState(null);
-    const [focusHistory, setFocusHistory] = useState(['fhfh','fggf'])
+    const [focusHistory, setFocusHistory] = useState([])
 
     return (
         <View style={styles.container}>
             {focusSubject ? (
                 <Timer focusSubject={focusSubject} 
-                
-                onTimerEnd={(subject)=> {       setFocusSubject(null);
+                onTimerEnd={(subject)=> {setFocusSubject(null);
                     setFocusHistory([...focusHistory, subject])}}
                 clearSubject={() => {
                     setFocusSubject(null);

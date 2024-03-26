@@ -5,7 +5,7 @@ import { fontSizes, spacing } from "../utils/sizes";
 
 export const FocusHistory =({focusHistory})=>{
 
-    if (!focusHistory || !focusHistory.length) return null
+    if (!focusHistory || !focusHistory.length) return <Text style={styles.title}>We haven't focused on anything yet.</Text>
 
     return (
         <View style={styles.container}>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         color:colors.white,
         fontSize: fontSizes.md,
         padding:spacing.md,
-        textAlign:'center',
+        // textAlign:'center',
         fontWeight:'bold'
 },
     item:{
